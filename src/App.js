@@ -56,7 +56,6 @@ function App() {
           <Route path="/upcoming" element={<Card key='upcoming' data={data} />} />
           <Route path="/past" element={<Card key='past' data={data} />} />
           <Route path='/launch/:launch_id' element={<CardDetail data={data} rocketData={rocketData} />} />
-          <Route path="*" element={<><h2>Page Not Found</h2></>} />
         </Routes>
       </BrowserRouter>
     </>
