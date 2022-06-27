@@ -3,7 +3,7 @@ import CardItem from './CardItem';
 import Spinner from './Spinner';
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const Card = ({ data }) => {
+const Card = ({ data, loading }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
@@ -25,6 +25,7 @@ const Card = ({ data }) => {
   return (
     <div className='container my-5'>
       <h2 className='text-center my-5'>Heading Space</h2>
+      {loading && <Spinner />}
       <InfiniteScroll
         dataLength={currentPosts.length}
         next={fetchMoreData}

@@ -14,7 +14,7 @@ const CardDetail = ({ data, rocketData }) => {
 
                 const { name, id, launch_date, flight_number, details, success, links, upcoming, rocket } = element;
 
-                const rocketDetails = rocketData.filter((element) => element.id === rocket)
+                let rocketDetails = rocketData.filter((element) => element.id === rocket)
                     .map((element) => {
                         return (
                             {
