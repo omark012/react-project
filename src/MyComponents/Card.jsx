@@ -16,7 +16,6 @@ const Card = ({ data, loading }) => {
   const fetchMoreData = () => {
     // a fake async api call like which sends
     // 10 more records in 1.5 secs
-    console.log('fetching');
     setTimeout(() => {
       setCurrentPage((prevPage) => prevPage + 1);
     }, 1500);

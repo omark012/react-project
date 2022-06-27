@@ -11,7 +11,7 @@ const CardDetail = ({ data, rocketData }) => {
 
         data.filter((element) => element.id === launch_id)
             .map((element) => {
-
+                
                 const { name, id, launch_date, flight_number, details, success, links, upcoming, rocket } = element;
 
                 let rocketDetails = rocketData.filter((element) => element.id === rocket)
@@ -25,11 +25,11 @@ const CardDetail = ({ data, rocketData }) => {
                     });
 
                 return (
-                    <>
+                    <div key={id}>
 
-                        <div className="card my-5 container w-50 p-3" key={id}>
+                        <div className="card my-5 container w-50 p-3">
 
-                            <iframe className="ratio ratio-21x9" width="1349" height="480" src={`https://www.youtube.com/embed/${links.youtube_id}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            <iframe className="ratio ratio-21x9" width="1349" height="480" src={`https://www.youtube.com/embed/${links.youtube_id}`} frameBorder="0" allowFullScreen></iframe>
                             <div className="card-body">
                                 <h5><span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
                                     {upcoming ? 'Upcoming' : 'Past'}
@@ -41,18 +41,18 @@ const CardDetail = ({ data, rocketData }) => {
                                 <p className="card-text"><small className="text-muted">Rocket Name: {rocketDetails[0].rocket_name}</small></p>
                                 <div>
                                     <p>
-                                        <button class="btn btn-outline-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <button className="btn btn-outline-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                             Payload List
                                         </button>
                                     </p>
-                                    <div class="collapse mb-3" id="collapseExample">
-                                        <ol class="list-group list-group-numbered">
+                                    <div className="collapse mb-3" id="collapseExample">
+                                        <ol className="list-group list-group-numbered">
                                             {rocketDetails[0].payload_weights.map((element) => (
-                                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                                    <div class="ms-2 me-auto">
-                                                        <div class="fw-bold">{element.name}</div>
+                                                <li key={element.id} className="list-group-item d-flex justify-content-between align-items-start">
+                                                    <div className="ms-2 me-auto">
+                                                        <div className="fw-bold">{element.name}</div>
                                                     </div>
-                                                    <span class="badge bg-primary rounded-pill">{element.kg} Kg</span>
+                                                    <span className="badge bg-primary rounded-pill">{element.kg} Kg</span>
                                                 </li>
                                             )
                                             )}
@@ -60,15 +60,15 @@ const CardDetail = ({ data, rocketData }) => {
                                     </div>
                                 </div>
                                 <div className="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <a href={links.wikipedia} className="btn btn-secondary">Wikipedia</a>
-                                    <a href={links.article} className="btn btn-warning">Article</a>
+                                    <a href={links.wikipedia} target='_blank' rel="noreferrer" className="btn btn-secondary">Wikipedia</a>
+                                    <a href={links.article} target='_blank' rel="noreferrer" className="btn btn-warning">Article</a>
                                 </div>
                                 <div className='text-center mt-5' onClick={() => navigate(-1)}>
-                                    <img src={back} style={{ width: '9%', cursor: 'pointer' }} alt="" />
+                                    <img src={back} style={{ width: '9%', cursor: 'pointer' }} alt="< Back" />
                                 </div>
                             </div>
                         </div>
-                    </>
+                    </div>
                 )
             })
 
